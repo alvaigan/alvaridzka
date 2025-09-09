@@ -32,7 +32,7 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
     if (!isVisible) return null;
 
     return (
-        <div className="flex flex-col min-h-screen justify-between chivo-font z-50 lg bg-[#ECDCCB] transition-opacity duration-500 ease-in-out overflow-y-auto">
+        <div className="flex flex-col min-h-screen justify-between chivo-font z-50 lg bg-[#ECDCCB] transition-opacity duration-500 ease-in-out relative overflow-y-auto">
             <Image
                 src={`/flower-1.svg`}
                 width={0}
@@ -73,7 +73,7 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
                 <p className="sm:text-sm">Kepada Yth Bapak/Ibu/Saudara/i</p>
                 <h2 className="text-2xl sm:text-xl font-medium">John Doe bin Smith</h2>
             </div>
-            <div className="m-1 md:m-4 z-50">
+            <div className="m-1 md:m-4 z-50 sticky">
                 <button
                     onClick={handleOpen}
                     className="btn-primary w-full sm:text-sm"
