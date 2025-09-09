@@ -39,7 +39,7 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
                 height={0}
                 sizes="100%"
                 alt="flower-1"
-                className="w-full h-full"
+                className="size-dvw"
                 priority
                 fetchPriority="high"
             />
@@ -69,7 +69,7 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
                 <p>Kepada Yth Bapak/Ibu/Saudara/i</p>
                 <h2 className="text-2xl font-medium">John Doe bin Smith</h2>
             </div>
-            <div className="m-4">
+            <div className="m-4 sm:m-1">
                 <button 
                     onClick={handleOpen}
                     className="btn-primary w-full transition-transform duration-300 hover:scale-105 active:scale-95"
