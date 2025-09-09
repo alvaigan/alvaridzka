@@ -76,7 +76,7 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
             <div className="m-4 sm:m-1 z-50">
                 <button
                     onClick={handleOpen}
-                    className="btn-primary w-full transition-transform duration-300 hover:scale-105 active:scale-95 sm:text-sm"
+                    className="btn-primary w-full sm:text-sm"
                 >
                     Buka Undangan{" "}
                     <EnvelopeOpenIcon size={20} weight="duotone" className="ml-2" />
