@@ -32,17 +32,17 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
     if (!isVisible) return null;
 
     return (
-        <div className="flex flex-col min-h-screen justify-between chivo-font z-50 lg bg-[#ECDCCB] transition-opacity duration-500 ease-in-out relative">
-                <Image
-                    src={`/flower-1.svg`}
-                    width={0}
-                    height={0}
-                    sizes="100%"
-                    alt="flower-1"
-                    className="size-max top-0 left-0 absolute z-10"
-                    priority
-                    fetchPriority="high"
-                />
+        <div className="flex flex-col min-h-screen justify-between chivo-font z-50 lg bg-[#ECDCCB] transition-opacity duration-500 ease-in-out relative overflow-auto">
+            <Image
+                src={`/flower-1.svg`}
+                width={0}
+                height={0}
+                sizes="100%"
+                alt="flower-1"
+                className="size-max top-0 left-0 absolute z-10"
+                priority
+                fetchPriority="high"
+            />
             <div className="flex flex-col justify-center items-center flex-grow z-50">
                 <div className="flex flex-col items-end">
                     <div className="font-medium italic text-3xl sm:text-2xl">
