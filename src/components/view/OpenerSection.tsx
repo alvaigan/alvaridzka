@@ -39,15 +39,15 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
                 height={0}
                 sizes="100%"
                 alt="flower-1"
-                className="size-dvw"
+                className="size-full sm:size-min"
                 priority
                 fetchPriority="high"
             />
             <div className="flex flex-col justify-center items-center flex-grow">
                 <div className="flex flex-col items-end">
-                <div className="font-medium italic text-3xl">Undangan Pernikahan:</div>
-                <div className="cookie-font text-5xl">Alvaigan</div>
-                <div className="cookie-font text-5xl">Ridzka Nur Fajrie</div>
+                <div className="font-medium italic text-3xl sm:text-2xl">Undangan Pernikahan:</div>
+                <div className="cookie-font text-5xl sm:text-3xl">Alvaigan</div>
+                <div className="cookie-font text-5xl sm:text-3xl">Ridzka Nur Fajrie</div>
                 <div className="flex flex-row items-center text-base">
                     <div>Bandung</div>
                     <div>
