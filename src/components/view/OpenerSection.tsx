@@ -69,11 +69,11 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
                     </div>
                 </div>
             </div>
-            <div className="text-center mb-2 md:mb-10 z-50">
+            <div className="text-center mb-10 z-50">
                 <p className="sm:text-sm">Kepada Yth Bapak/Ibu/Saudara/i</p>
                 <h2 className="text-2xl sm:text-xl font-medium">John Doe bin Smith</h2>
             </div>
-            <div className="m-1 md:m-4 z-50 sticky">
+            <div className="m-4 z-50 sticky">
                 <button
                     onClick={handleOpen}
                     className="btn-primary w-full sm:text-sm"
