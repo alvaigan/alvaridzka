@@ -7,6 +7,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [showOpener, setShowOpener] = useState(true);
 
   useEffect(() => {
     // Function to hide loading screen
@@ -30,15 +31,22 @@ export default function Home() {
     };
   }, []);
 
+  const handleOpenInvitation = () => {
+    setShowOpener(false);
+  };
+
   return (
     <>
       <LoadingScreen isVisible={loading} />
-      <div className="flex flex-col justify-center items-center bg-gray-300">
-        <div className="flex flex-col justify-center min-w-full sm:min-w-full md:min-w-lg bg-[#ECDCCB]">
-          <OpenerSection />
-          <MainSection />
+        <div className="flex flex-col justify-center items-center bg-gray-300">
+          <div className="flex flex-col justify-center min-w-full sm:min-w-full md:min-w-lg bg-[#ECDCCB]">
+      {showOpener ? (
+        <OpenerSection onOpen={handleOpenInvitation} />
+      ) : (
+            <MainSection />
+      )}
+          </div>
         </div>
-      </div>
     </>
   );
 }
