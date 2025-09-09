@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-brown: #68635E;
+  --color-brown-light: #ECDCCB;
+  --color-cream: #f5f1eb;
 }
 
 @theme inline {
@@ -23,4 +26,40 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.chivo-font {
+  font-family: var(--font-chivo);
+}
+
+.cookie-font {
+  font-family: var(--font-cookie);
+}
+
+.btn-primary {
+  @apply px-4 py-2 text-white bg-[#68635E] rounded-md hover:bg-[#4E4A46] cursor-pointer inline-flex items-center justify-center;
+}
+
+.bg-light {
+  @apply bg-[#ECDCCB];
+}
+
+.bg-dark {
+  @apply bg-[#332F2B];
+}
+
+.bg-brown {
+  @apply bg-[#68635E];
+}
+
+.bg-brown-light {
+  @apply bg-[#ECDCCB];
+}
+
+.bg-cream {
+  @apply bg-[#f5f1eb];
+}
+
+.text-brown {
+  @apply text-[#68635E];
 }
