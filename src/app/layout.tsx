@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import {Chivo, Cookie } from "next/font/google";
+import {Aref_Ruqaa, Chivo, Cookie, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 
@@ -16,6 +16,20 @@ const cookie = Cookie({
   weight: ["400"],
 }) 
 
+const arefRuqa = Aref_Ruqaa({
+  subsets: ["latin"],
+  variable: "--font-aref-ruqa",
+  style: ["normal"],
+  weight: ["400", "700"],
+})
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+})
+
 export const metadata: Metadata = {
   title: "Alvaigan & Ridzka Nur Fajrie",
   description: "The Wedding of Alvaigan & Ridzka Nur Fajrie",
@@ -29,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth">
       <body
-        className={` ${chivo.variable} ${cookie.variable} antialiased`}
+        className={` ${chivo.variable} ${cookie.variable} ${arefRuqa.variable} ${playfair.variable} antialiased`}
       >
         {children}
       </body>

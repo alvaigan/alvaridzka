@@ -36,6 +36,14 @@ body {
   font-family: var(--font-cookie);
 }
 
+.aref-font {
+  font-family: var(--font-aref-ruqa);
+}
+
+.playfair-font {
+  font-family: var(--font-playfair);
+}
+
 .btn-primary {
   @apply px-4 py-2 text-white bg-[#68635E] rounded-md hover:bg-[#4E4A46] cursor-pointer inline-flex items-center justify-center;
 }

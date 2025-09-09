@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import MainSection from "@/components/view/MainSection";
 import OpenerSection from "@/components/view/OpenerSection";
 import LoadingScreen from "@/components/LoadingScreen";
+import QuotesSection from "@/components/view/QuotesSection";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -39,11 +40,14 @@ export default function Home() {
     <>
       <LoadingScreen isVisible={loading} />
       <div className="flex flex-col justify-center items-center bg-gray-300">
-        <div className="flex flex-col justify-center min-w-full sm:min-w-full md:min-w-lg bg-[#ECDCCB]">
+        <div className="flex flex-col justify-center min-w-full sm:min-w-full md:min-w-lg md:max-w-lg bg-[#ECDCCB]">
           {showOpener ? (
             <OpenerSection onOpen={handleOpenInvitation} />
           ) : (
-            <MainSection />
+            <>
+              <MainSection />
+              <QuotesSection />
+            </>
           )}
         </div>
       </div>
