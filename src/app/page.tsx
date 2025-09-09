@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import MainSection from "@/components/view/MainSection";
 import OpenerSection from "@/components/view/OpenerSection";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -16,17 +16,17 @@ export default function Home() {
     };
 
     // Hide loading screen when page fully loads
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       hideLoadingScreen();
     } else {
-      window.addEventListener('load', hideLoadingScreen);
+      window.addEventListener("load", hideLoadingScreen);
     }
 
     // Fallback: hide after 3 seconds if load event doesn't fire
     const fallbackTimer = setTimeout(hideLoadingScreen, 3000);
 
     return () => {
-      window.removeEventListener('load', hideLoadingScreen);
+      window.removeEventListener("load", hideLoadingScreen);
       clearTimeout(fallbackTimer);
     };
   }, []);
@@ -38,15 +38,15 @@ export default function Home() {
   return (
     <>
       <LoadingScreen isVisible={loading} />
-        <div className="flex flex-col justify-center items-center bg-gray-300">
-          <div className="flex flex-col justify-center min-w-full sm:min-w-full md:min-w-lg bg-[#ECDCCB]">
-      {showOpener ? (
-        <OpenerSection onOpen={handleOpenInvitation} />
-      ) : (
+      <div className="flex flex-col justify-center items-center bg-gray-300">
+        <div className="flex flex-col justify-center min-w-full sm:min-w-full md:min-w-lg bg-[#ECDCCB]">
+          {showOpener ? (
+            <OpenerSection onOpen={handleOpenInvitation} />
+          ) : (
             <MainSection />
-      )}
-          </div>
+          )}
         </div>
+      </div>
     </>
   );
 }

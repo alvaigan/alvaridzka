@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const MainSection = () => {
     return (
-        <div className="flex flex-col min-h-screen justify-center items-center chivo-font z-10 bg-dark bg-[url('/bg-decoration.svg')] bg-cover bg-center bg-repeat-y relative">
+        <div className="flex flex-col min-h-dvh justify-center items-center chivo-font z-10 bg-dark bg-[url('/bg-decoration.svg')] bg-cover bg-center bg-repeat-y relative">
             <Image
                 src={`/main-couple.png`}
                 width={0}
