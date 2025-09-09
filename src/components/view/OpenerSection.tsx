@@ -48,7 +48,7 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
                 <div className="font-medium italic text-3xl sm:text-2xl">Undangan Pernikahan:</div>
                 <div className="cookie-font text-5xl sm:text-3xl">Alvaigan</div>
                 <div className="cookie-font text-5xl sm:text-3xl">Ridzka Nur Fajrie</div>
-                <div className="flex flex-row items-center text-base">
+                <div className="flex flex-row items-center text-base sm:text-sm">
                     <div>Bandung</div>
                     <div>
                         <DotOutlineIcon size={16} weight="fill" color="black" />
@@ -66,13 +66,13 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
                 </div>
             </div>
             <div className="text-center mb-10">
-                <p>Kepada Yth Bapak/Ibu/Saudara/i</p>
-                <h2 className="text-2xl font-medium">John Doe bin Smith</h2>
+                <p className="sm:text-sm">Kepada Yth Bapak/Ibu/Saudara/i</p>
+                <h2 className="text-2xl sm:text-xl font-medium">John Doe bin Smith</h2>
             </div>
             <div className="m-4 sm:m-1">
                 <button 
                     onClick={handleOpen}
-                    className="btn-primary w-full transition-transform duration-300 hover:scale-105 active:scale-95"
+                    className="btn-primary w-full transition-transform duration-300 hover:scale-105 active:scale-95 sm:text-sm"
                 >
                     Buka Undangan <EnvelopeOpenIcon size={20} weight="duotone" className="ml-2" />
                 </button>
