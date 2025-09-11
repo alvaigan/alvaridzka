@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 import MainSection from "@/components/view/MainSection";
 import OpenerSection from "@/components/view/OpenerSection";
 import LoadingScreen from "@/components/LoadingScreen";
-import QuotesSection from "@/components/view/QuotesSection";
+import CoupleSection from "@/components/view/CoupleSection";
+import QuoteSection from "@/components/view/QuoteSection";
+import EventSection from "@/components/view/EventSection";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -46,7 +48,9 @@ export default function Home() {
           ) : (
             <>
               <MainSection />
-              <QuotesSection />
+              <CoupleSection />
+              <QuoteSection />
+              <EventSection />
             </>
           )}
         </div>
