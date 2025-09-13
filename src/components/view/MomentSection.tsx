@@ -66,16 +66,16 @@ const MomentSection = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4 mx-4">
-                <div className="gallery-item bg-[url('/img-1.jpg')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-2.jpg')] bg-cover bg-center bg-repeat-y w-full h-full row-span-2 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-5.jpg')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-4.jpg')] bg-cover bg-center bg-repeat-y w-full h-full rounded-lg row-span-2 hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-3.jpg')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-6.jpg')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-10.jpg')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-7.jpg')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-12.jpg')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-8.jpg')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-1.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-2.JPG')] bg-cover bg-center bg-repeat-y w-full h-full row-span-2 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-5.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-4.JPG')] bg-cover bg-center bg-repeat-y w-full h-full rounded-lg row-span-2 hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-3.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-6.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-10.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-7.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-12.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item bg-[url('/img-8.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
             </div>
         </div>
     );
