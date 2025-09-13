@@ -16,9 +16,9 @@ const MainSection = () => {
                 fetchPriority="high" />
 
             <div className="flex flex-row justify-center items-center gap-2 my-4 p-5 bg-light rounded-full border-5 border-[#4D412A] shadow-xl">
-                <div className="cookie-font text-2xl">Alvaigan</div>
-                <div className="cookie-font text-2xl">{`&`}</div>
-                <div className="cookie-font text-2xl">Ridzka Nur Fajrie</div>
+                <div className="cookie-font text-4xl">Alvaigan</div>
+                <div className="cookie-font text-4xl">{`&`}</div>
+                <div className="cookie-font text-4xl">Ridzka Nur Fajrie</div>
             </div>
         </div>
     );

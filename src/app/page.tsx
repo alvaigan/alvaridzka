@@ -7,6 +7,10 @@ import LoadingScreen from "@/components/LoadingScreen";
 import CoupleSection from "@/components/view/CoupleSection";
 import QuoteSection from "@/components/view/QuoteSection";
 import EventSection from "@/components/view/EventSection";
+import MomentSection from "@/components/view/MomentSection";
+import WishSection from "@/components/view/WishSection";
+import ThankSection from "@/components/view/ThankSection";
+import FooterSection from "@/components/view/FooterSection";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -51,6 +55,10 @@ export default function Home() {
               <CoupleSection />
               <QuoteSection />
               <EventSection />
+              <MomentSection />
+              <WishSection />
+              <ThankSection />
+              <FooterSection />
             </>
           )}
         </div>
