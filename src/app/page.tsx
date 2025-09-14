@@ -11,6 +11,8 @@ import MomentSection from "@/components/view/MomentSection";
 import WishSection from "@/components/view/WishSection";
 import ThankSection from "@/components/view/ThankSection";
 import FooterSection from "@/components/view/FooterSection";
+import FirstParallaxSection from "@/components/FirstParallaxSection";
+import SecondParallaxSection from "@/components/SecondParallaxSection";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -52,7 +54,9 @@ export default function Home() {
           ) : (
             <>
               <MainSection />
+                <FirstParallaxSection />
               <CoupleSection />
+                <SecondParallaxSection />
               <QuoteSection />
               <EventSection />
               <MomentSection />

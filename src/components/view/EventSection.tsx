@@ -14,6 +14,7 @@ const EventSection = () => {
     const descRef = useRef<HTMLParagraphElement>(null);
     const cardsRef = useRef<HTMLDivElement[]>([]);
     const locationRefs = useRef<HTMLDivElement[]>([]);
+    const bgImg = useRef<HTMLImageElement>(null);
 
     // Add card ref to the array
     const addToCardsRef = (el: HTMLDivElement | null) => {
@@ -88,14 +89,23 @@ const EventSection = () => {
                 "-=0.3",
             );
 
-            // Infinite looping animation for the background
-            gsap.to(".bg-img", {
-                scale: 1.1,
-                duration: 10,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-            });
+            gsap.fromTo(
+                bgImg.current,
+                {
+                    xPercent: 0,
+                },
+                {
+                    xPercent: -70,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: eventContainer.current,
+                        start: "top 40%",
+                        end: "bottom 50%",
+                        scrub: true,
+                        toggleActions: "play none none none",
+                    },
+                },
+            );
 
             // Add hover effects to cards
             cardsRef.current.forEach((card) => {
@@ -136,15 +146,16 @@ const EventSection = () => {
     );
 
     return (
-        <div className="flex flex-col pt-5 pb-20 gap-10 relative bg-black">
-            <div className="absolute top-0 left-0 w-full h-full z-0">
+        <div className="flex flex-col pt-5 pb-20 gap-10 relative bg-dark2 overflow-x-hidden">
+            <div className="absolute top-0 left-0 w-7xl h-full z-0 overflow-hidden">
                 <Image
-                    src={`/bg-img-1.png`}
+                    ref={bgImg}
+                    src={`/bg-img-2.jpg`}
                     width={0}
                     height={0}
                     sizes="100%"
                     alt="bg-decoration"
-                    className="bg-img w-full h-auto object-cover"
+                    className="w-full h-full object-cover bg-repeat-y"
                     priority
                     fetchPriority="high"
                 />

@@ -32,7 +32,7 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
     if (!isVisible) return null;
 
     return (
-        <div className="flex flex-col min-h-svh justify-between chivo-font z-50 lg bg-[#ECDCCB] transition-opacity duration-500 ease-in-out relative">
+        <div className="flex flex-col min-h-svh justify-between chivo-font z-20 lg bg-[#ECDCCB] transition-opacity duration-500 ease-in-out relative">
             <Image
                 src={`/flower-1.svg`}
                 width={0}
@@ -44,15 +44,15 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
                 fetchPriority="high"
             />
             <div className="flex flex-col justify-center items-center flex-grow z-50">
-                <div className="flex flex-col items-end">
-                    <div className="font-medium italic text-3xl sm:text-2xl">
+                <div className="flex flex-col items-end md:w-3/4">
+                    <div className="font-medium italic text-2xl">
                         Undangan Pernikahan:
                     </div>
-                    <div className="cookie-font text-5xl sm:text-3xl">Alvaigan</div>
-                    <div className="cookie-font text-5xl sm:text-3xl">
+                    <div className="cookie-font text-5xl">Alvaigan</div>
+                    <div className="cookie-font text-5xl">
                         Ridzka Nur Fajrie
                     </div>
-                    <div className="flex flex-row items-center text-base sm:text-sm">
+                    <div className="flex flex-row items-center text-base">
                         <div>Bandung</div>
                         <div>
                             <DotOutlineIcon size={16} weight="fill" color="black" />
