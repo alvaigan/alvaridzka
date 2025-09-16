@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import MainSection from "@/components/view/MainSection";
 import OpenerSection from "@/components/view/OpenerSection";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -16,6 +16,9 @@ import FooterSection from "@/components/view/FooterSection";
 import FirstParallaxSection from "@/components/FirstParallaxSection";
 import SecondParallaxSection from "@/components/SecondParallaxSection";
 import FloatingMusicController from "@/components/FloatingMusicController";
+
+// Loading fallback component
+const LoadingFallback = () => <div>Loading...</div>;
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -53,7 +56,9 @@ export default function Home() {
       <div className="flex flex-col justify-center items-center bg-gray-300">
         <div className="flex flex-col justify-center min-w-full sm:min-w-full md:min-w-lg md:max-w-lg bg-[#ECDCCB]">
           {showOpener ? (
-            <OpenerSection onOpen={handleOpenInvitation} />
+            <Suspense fallback={<LoadingFallback />}>
+              <OpenerSection onOpen={handleOpenInvitation} />
+            </Suspense>
           ) : (
             <>
               <FloatingMusicController />
@@ -63,7 +68,9 @@ export default function Home() {
               <SecondParallaxSection />
               <QuoteSection />
               <EventSection />
-              <AttendanceConfirmationSection />
+              <Suspense fallback={<LoadingFallback />}>
+                <AttendanceConfirmationSection />
+              </Suspense>
               <MomentSection />
               <LoveGiftSection />
               <WishSection />

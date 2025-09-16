@@ -3,13 +3,12 @@
 import { DotOutlineIcon, EnvelopeOpenIcon } from "@phosphor-icons/react/ssr";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import { useAudio } from "@/context/AudioContext";
+import { useGuestName } from "@/hooks/useGuestName";
 
-const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
+const OpenerContent = ({ onOpen }: { onOpen: () => void }) => {
     const [isVisible, setIsVisible] = useState(true);
-    const searchParams = useSearchParams();
-    const guestName = searchParams.get('to') || 'John Doe bin Smith';
+    const guestName = useGuestName();
     const { playAudio } = useAudio();
 
     const handleOpen = () => {
@@ -93,6 +92,12 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
             </div>
         </div>
     );
+};
+
+const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
+  return (
+    <OpenerContent onOpen={onOpen} />
+  );
 };
 
 export default OpenerSection;

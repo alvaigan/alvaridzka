@@ -1,11 +1,10 @@
 "use client";
 
 import React from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useGuestName } from '@/hooks/useGuestName';
 
-const AttendanceConfirmationSection = () => {
-  const searchParams = useSearchParams();
-  const guestName = searchParams.get('to') || 'Tamu';
+const AttendanceConfirmationContent = () => {
+  const guestName = useGuestName();
 
   const handleAttendance = (isAttending: boolean) => {
     const message = isAttending 
@@ -34,6 +33,12 @@ const AttendanceConfirmationSection = () => {
         </button>
       </div>
     </section>
+  );
+};
+
+const AttendanceConfirmationSection = () => {
+  return (
+    <AttendanceConfirmationContent />
   );
 };
 
