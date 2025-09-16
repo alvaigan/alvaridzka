@@ -1,65 +1,63 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 const LoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
   const [progress, setProgress] = useState(0);
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!isVisible) {
-      setProgress(0);
+      // Smoothly finish to 100% before hiding
+      setProgress(100);
       return;
     }
-    
-    // Track loading progress
-    let currentProgress = 0;
-    const increment = () => {
-      if (!isVisible || currentProgress >= 100) {
-        return;
+
+    let current = 0;
+
+    const animate = () => {
+      if (current < 95) {
+        // Increment gradually with easing
+        const increment = Math.max(0.5, (100 - current) * 0.03);
+        current = Math.min(current + increment, 95);
+        setProgress(Math.floor(current));
+        animationRef.current = requestAnimationFrame(animate);
       }
-      
-      // Increment by a random amount to simulate variable loading
-      const incrementValue = Math.random() * 15 + 5;
-      currentProgress = Math.min(currentProgress + incrementValue, 100);
-      setProgress(Math.floor(currentProgress));
-      
-      // Continue incrementing
-      setTimeout(increment, Math.random() * 200 + 50);
     };
-    
-    increment();
-    
-    // Reset progress when component becomes visible
+
+    animate();
+
     return () => {
-      setProgress(0);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, [isVisible]);
 
-  if (!isVisible) return null;
+  if (!isVisible && progress >= 100) return null;
 
   return (
-    <div className="fixed inset-0 bg-cream z-50 flex flex-col items-center justify-center">
-      <div className="relative mb-8">
-        <Image 
-          src="/heart-loading.gif" 
-          alt="Loading..." 
-          width={100} 
+    <div className="fixed inset-0 bg-cream z-50 flex flex-col items-center justify-center transition-opacity duration-500">
+      <div className="relative mb-8 animate-fadeIn">
+        <Image
+          src="/heart-loading.gif"
+          alt="Loading..."
+          width={100}
           height={100}
           unoptimized // Important for GIFs
+          priority
         />
       </div>
-      
+
       <div className="w-64 h-4 bg-brown-light rounded-full overflow-hidden">
-        <div 
-          className="h-full bg-brown transition-all duration-300 ease-out"
+        <div
+          className="h-full bg-brown transition-[width] duration-200 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
-      
-      <div className="mt-4 text-brown font-semibold">
-        {progress}%
-      </div>
+
+      <div className="mt-4 text-brown font-semibold">{progress}%</div>
     </div>
   );
 };

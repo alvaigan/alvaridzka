@@ -8,11 +8,14 @@ import CoupleSection from "@/components/view/CoupleSection";
 import QuoteSection from "@/components/view/QuoteSection";
 import EventSection from "@/components/view/EventSection";
 import MomentSection from "@/components/view/MomentSection";
+import LoveGiftSection from "@/components/view/LoveGiftSection";
 import WishSection from "@/components/view/WishSection";
+import AttendanceConfirmationSection from "@/components/view/AttendanceConfirmationSection";
 import ThankSection from "@/components/view/ThankSection";
 import FooterSection from "@/components/view/FooterSection";
 import FirstParallaxSection from "@/components/FirstParallaxSection";
 import SecondParallaxSection from "@/components/SecondParallaxSection";
+import FloatingMusicController from "@/components/FloatingMusicController";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -53,13 +56,16 @@ export default function Home() {
             <OpenerSection onOpen={handleOpenInvitation} />
           ) : (
             <>
+              <FloatingMusicController />
               <MainSection />
-                <FirstParallaxSection />
+              <FirstParallaxSection />
               <CoupleSection />
-                <SecondParallaxSection />
+              <SecondParallaxSection />
               <QuoteSection />
               <EventSection />
+              <AttendanceConfirmationSection />
               <MomentSection />
+              <LoveGiftSection />
               <WishSection />
               <ThankSection />
               <FooterSection />

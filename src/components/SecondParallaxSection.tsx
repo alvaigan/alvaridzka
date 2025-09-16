@@ -33,6 +33,7 @@ export default function SecondParallaxSection() {
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: sectionRef.current,
+            start: "top 60%", // when section enters viewport
           scrub: true, // smooth scrubbing
         },
       })

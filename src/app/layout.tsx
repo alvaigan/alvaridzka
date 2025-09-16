@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {Aref_Ruqaa, Chivo, Cookie, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { AudioProvider } from "@/context/AudioContext";
 
 
 const chivo = Chivo({
@@ -45,7 +46,9 @@ export default function RootLayout({
       <body
         className={` ${chivo.variable} ${cookie.variable} ${arefRuqa.variable} ${playfair.variable} antialiased`}
       >
-        {children}
+        <AudioProvider>
+          {children}
+        </AudioProvider>
       </body>
     </html>
   );

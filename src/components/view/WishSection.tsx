@@ -129,30 +129,30 @@ const WishSection = () => {
     return (
         <div
             ref={containerRef}
-            className="flex flex-col chivo-font z-10 bg-light bg-cover bg-center bg-repeat-y pb-20"
+            className="flex flex-col chivo-font z-10 bg-light bg-[url('/bg-decoration.svg')] bg-cover bg-center bg-repeat-y pb-20"
         >
             <div className="flex flex-col justify-center items-center">
                 <h1 className="text-4xl cookie-font text-center border-b border-black text-black mt-10">
                     {"Ucapan & Do'a"}
                 </h1>
             </div>
-            <div className="flex flex-col px-5 py-10 rounded-4xl bg-[#B48673] gap-5 mx-5 my-5">
+            <div className="flex flex-col px-5 py-10 rounded-4xl bg-[#B48673] gap-5 mx-5 my-5  drop-shadow-lg">
                 <input
                     type="text"
                     placeholder="Masukkan Nama"
-                    className="bg-[#ECDCCB] rounded-lg py-2 px-4"
+                    className="bg-white rounded-lg py-2 px-4"
                 />
 
                 <textarea
                     placeholder="Masukkan Ucapan"
-                    className="bg-[#ECDCCB] rounded-lg py-2 px-4"
+                    className="bg-white rounded-lg py-2 px-4"
                 />
 
                 <button className="bg-dark rounded-lg py-2 px-4 text-white">
                     Kirim <ShareFatIcon className="inline ml-2" weight="duotone" />
                 </button>
 
-                {commentItem.length > 11 && (
+                {commentItem.length > 0 && (
                     <div className="flex flex-col gap-4 chivo-font text-sm overflow-y-scroll h-50">
                         {commentItem.map((item, index) => (
                             <div

@@ -4,7 +4,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
-import { ConfettiIcon, UsersIcon } from "@phosphor-icons/react";
+import {
+    CalendarPlusIcon,
+    ConfettiIcon,
+    UsersIcon,
+} from "@phosphor-icons/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -165,7 +169,7 @@ const EventSection = () => {
                 className="flex flex-col items-center gap-4 text-white z-10 w-full min-h-screen px-5 relative overflow-y-visible"
             >
                 <div
-                    className="flex flex-col justify-center items-center gap-4"
+                    className="flex flex-col justify-center items-center gap-4 mb-20"
                     id="event"
                 >
                     <h1
@@ -208,32 +212,38 @@ const EventSection = () => {
                                 Resepsi
                             </h2>
                             <p className="text-xl">Sabtu, 04 Oktober 2025</p>
-                            <p className="text-sm">Pukul 11.00 WIB - Selesai</p>
+                            <p className="text-sm">Pukul 11.00 WIB - 14.00 WIB</p>
                         </div>
+                        <button
+                            className="btn-white w-full"
+                            onClick={() => {
+                                window.open(
+                                    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+                                    "&text=The%20Wedding%20Of%20Alvaigan%20%26%20Ridzka%20Nur%20Fajrie" +
+                                    "&dates=20251004T080000/20251004T140000" +
+                                    "&details=The%20Wedding%20Of%20Alvaigan%20%26%20Ridzka%20Nur%20Fajrie" +
+                                    "&location=Gedung%20Hasri%20Ainun%20Habibie%2C%20Jl.%20Kapten%20Tata%20Natanegara%2C%20Pajajaran%2C%20Kec.%20Cicendo%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040173",
+                                    "_blank",
+                                );
+                            }}
+                        >
+                            Simpan ke kalender{" "}
+                            <CalendarPlusIcon size={20} weight="duotone" className="ml-2" />
+                        </button>
                     </div>
                 </div>
 
                 <div
-                    ref={(el) => addToLocationRefs(el, 0)}
-                    className="flex flex-col justify-center items-center gap-4 py-10"
-                    id="location"
+                    ref={(el) => addToLocationRefs(el, 1)}
+                    className="flex flex-col justify-center items-center gap-4 py-10 px-5 w-full bg-black/[70%] rounded-2xl"
                 >
                     <h1 className="text-4xl cookie-font text-center border-b border-white chivo-font">
                         Alamat Lokasi
                     </h1>
-                    <p className="text-xl text-center max-w-2xl px-4">
+                    <p className="text-xl text-center max-w-2xl px-4 chivo-font">
                         Gedung Hasri Ainun Habibie, Jl. Kapten Tata Natanegara, Pajajaran,
                         Kec. Cicendo, Kota Bandung, Jawa Barat 40173
                     </p>
-                </div>
-
-                <div
-                    ref={(el) => addToLocationRefs(el, 1)}
-                    className="flex flex-col justify-center items-center gap-4 py-10 w-full"
-                >
-                    <h1 className="text-4xl cookie-font text-center border-b border-white chivo-font">
-                        Peta Lokasi
-                    </h1>
                     <div className="w-full rounded-xl backdrop-blur-sm border border-white/20">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.9284458798325!2d107.58256397608649!3d-6.8991613675185075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e76c9754f88d%3A0x843445b18b1002b3!2sHasri%20Ainun%20Habibie%20Convention%20Hall!5e0!3m2!1sen!2sid!4v1757786876495!5m2!1sen!2sid"

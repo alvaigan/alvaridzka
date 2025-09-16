@@ -14,12 +14,12 @@ export default function FirstParallaxSection() {
   useEffect(() => {
     if (sectionRef.current && imageRef.current) {
       gsap.to(imageRef.current, {
-        yPercent: 30, // how much the image moves
+        yPercent: 40, // how much the image moves
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 0%", // when section enters viewport
-          end: "bottom 20%", // when section leaves viewport
+          end: "bottom 0%", // when section leaves viewport
           scrub: true, // smooth scrubbing
         },
       });

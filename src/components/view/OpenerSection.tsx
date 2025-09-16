@@ -3,9 +3,14 @@
 import { DotOutlineIcon, EnvelopeOpenIcon } from "@phosphor-icons/react/ssr";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { useAudio } from "@/context/AudioContext";
 
 const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
     const [isVisible, setIsVisible] = useState(true);
+    const searchParams = useSearchParams();
+    const guestName = searchParams.get('to') || 'John Doe bin Smith';
+    const { playAudio } = useAudio();
 
     const handleOpen = () => {
         setIsVisible(false);
@@ -13,6 +18,9 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
         setTimeout(() => {
             onOpen();
         }, 500);
+        
+        // Play audio when opening invitation
+        playAudio();
     };
 
     // Prevent scrolling when the opener is visible
@@ -71,7 +79,8 @@ const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
             </div>
             <div className="text-center mb-10 z-50">
                 <p className="sm:text-sm">Kepada Yth Bapak/Ibu/Saudara/i</p>
-                <h2 className="text-2xl sm:text-xl font-medium">John Doe bin Smith</h2>
+                {/* Guest Name */}
+                <h2 className="text-2xl sm:text-xl font-medium">{guestName}</h2>
             </div>
             <div className="m-4 z-50 sticky">
                 <button

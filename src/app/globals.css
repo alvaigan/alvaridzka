@@ -48,6 +48,10 @@ body {
   @apply px-4 py-2 text-white bg-[#68635E] rounded-md hover:bg-[#4E4A46] cursor-pointer inline-flex items-center justify-center;
 }
 
+.btn-white {
+  @apply px-4 py-2 text-[#68635E] bg-white rounded-md hover:bg-[#DBCBBA] cursor-pointer inline-flex items-center justify-center;
+}
+
 .bg-light {
   @apply bg-[#ECDCCB];
 }
