@@ -14,21 +14,47 @@ const LoadingScreen = ({ isVisible }: { isVisible: boolean }) => {
       return;
     }
 
-    let current = 0;
+    // Check if all images are loaded
+    const checkImagesLoaded = () => {
+      const images = document.querySelectorAll('img');
+      let loadedCount = 0;
+      const totalCount = images.length;
 
-    const animate = () => {
-      if (current < 95) {
-        // Increment gradually with easing
-        const increment = Math.max(0.5, (100 - current) * 0.03);
-        current = Math.min(current + increment, 95);
-        setProgress(Math.floor(current));
-        animationRef.current = requestAnimationFrame(animate);
+      if (totalCount === 0) {
+        setProgress(100);
+        return;
       }
+
+      const checkImageLoad = () => {
+        loadedCount++;
+        setProgress(Math.floor((loadedCount / totalCount) * 100));
+        
+        // If all images are loaded, we're done
+        if (loadedCount === totalCount) {
+          setProgress(100);
+        }
+      };
+
+      images.forEach((img) => {
+        if ((img as HTMLImageElement).complete) {
+          checkImageLoad();
+        } else {
+          img.addEventListener('load', checkImageLoad);
+          img.addEventListener('error', checkImageLoad);
+        }
+      });
+
+      // Update progress based on already loaded images
+      setProgress(Math.floor((loadedCount / totalCount) * 100));
     };
 
-    animate();
+    // Wait for a short time to ensure all images are in the DOM
+    const timer = setTimeout(() => {
+      checkImagesLoaded();
+    }, 100);
 
     return () => {
+      clearTimeout(timer);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }

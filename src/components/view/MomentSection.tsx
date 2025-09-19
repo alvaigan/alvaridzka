@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,16 +67,117 @@ const MomentSection = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4 mx-4">
-                <div className="gallery-item bg-[url('/img-1.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-2.JPG')] bg-cover bg-center bg-repeat-y w-full h-full row-span-2 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-5.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-4.JPG')] bg-cover bg-center bg-repeat-y w-full h-full rounded-lg row-span-2 hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-3.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-6.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-10.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-7.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-12.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
-                <div className="gallery-item bg-[url('/img-8.JPG')] bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105"></div>
+                <div className="gallery-item  bg-cover bg-center bg-repeat-y w-full h-50 hover:scale-105 relative">
+                    <Image
+                        src={`/img-1.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-full row-span-2 rounded-lg hover:scale-105 relative">
+                    <Image
+                        src={`/img-13.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105 relative">
+                    <Image
+                        src={`/img-14.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover object-top absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-full rounded-lg row-span-2 hover:scale-105 relative">
+                    <Image
+                        src={`/img-4.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover object-center absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105 relative">
+                    <Image
+                        src={`/img-18.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105 relative">
+                    <Image
+                        src={`/img-17.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105 relative">
+                    <Image
+                        src={`/img-16.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105 relative">
+                    <Image
+                        src={`/img-7.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105 relative">
+                    <Image
+                        src={`/img-12.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
+                <div className="gallery-item bg-cover bg-center bg-repeat-y w-full h-50 rounded-lg hover:scale-105 relative">
+                    <Image
+                        src={`/img-8.JPG`}
+                        width={0}
+                        height={0}
+                        sizes="100%"
+                        alt="main-couple"
+                        className="size-full object-cover absolute rounded-lg"
+                        priority
+                        fetchPriority="high" />
+                </div>
             </div>
         </div>
     );

@@ -55,29 +55,31 @@ export default function Home() {
       <LoadingScreen isVisible={loading} />
       <div className="flex flex-col justify-center items-center bg-gray-300">
         <div className="flex flex-col justify-center min-w-full sm:min-w-full md:min-w-lg md:max-w-lg bg-[#ECDCCB]">
-          {showOpener ? (
+          {/* Always render all sections but show/hide with CSS transitions */}
+          <div className={`transition-all duration-500 ease-in-out ${showOpener ? 'opacity-0 h-0 overflow-hidden' : 'opacity-100'}`}>
+            <FloatingMusicController />
+            <MainSection />
+            <FirstParallaxSection />
+            <CoupleSection />
+            <SecondParallaxSection />
+            <QuoteSection />
+            <EventSection />
+            <Suspense fallback={<LoadingFallback />}>
+              <AttendanceConfirmationSection />
+            </Suspense>
+            <MomentSection />
+            <LoveGiftSection />
+            <WishSection />
+            <ThankSection />
+            <FooterSection />
+          </div>
+          
+          {/* Opener section with transition */}
+          <div className={`transition-all duration-500 ease-in-out ${showOpener ? 'opacity-100' : 'opacity-0 -translate-y-full h-0 overflow-hidden'}`}>
             <Suspense fallback={<LoadingFallback />}>
               <OpenerSection onOpen={handleOpenInvitation} />
             </Suspense>
-          ) : (
-            <>
-              <FloatingMusicController />
-              <MainSection />
-              <FirstParallaxSection />
-              <CoupleSection />
-              <SecondParallaxSection />
-              <QuoteSection />
-              <EventSection />
-              <Suspense fallback={<LoadingFallback />}>
-                <AttendanceConfirmationSection />
-              </Suspense>
-              <MomentSection />
-              <LoveGiftSection />
-              <WishSection />
-              <ThankSection />
-              <FooterSection />
-            </>
-          )}
+          </div>
         </div>
       </div>
     </>

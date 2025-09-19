@@ -209,7 +209,7 @@ const OpenerContent = ({ onOpen }: { onOpen: () => void }) => {
       // Delay the callback to allow for transition animation
       setTimeout(() => {
          onOpen();
-      }, 500);
+      }, 500); // Match the CSS transition duration
 
       // Play audio when opening invitation
       playAudio();
@@ -229,12 +229,20 @@ const OpenerContent = ({ onOpen }: { onOpen: () => void }) => {
       };
    }, [isVisible]);
 
-   if (!isVisible) return null;
+   if (!isVisible) {
+      return (
+         <div
+            ref={containerRef}
+            className="flex flex-col min-h-svh justify-between chivo-font z-20 lg bg-[#ECDCCB] transition-all duration-500 ease-in-out absolute opacity-0 -translate-y-full overflow-hidden"
+         >
+         </div>
+      );
+   }
 
    return (
       <div
          ref={containerRef}
-         className="flex flex-col min-h-svh justify-between chivo-font z-20 lg bg-[#ECDCCB] transition-opacity duration-500 ease-in-out relative overflow-hidden"
+         className="flex flex-col min-h-svh justify-between chivo-font z-20 lg bg-[#ECDCCB] transition-all duration-500 ease-in-out relative overflow-hidden"
       >
          <Image
             src={`/flower-1.svg`}
