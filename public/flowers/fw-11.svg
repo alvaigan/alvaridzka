@@ -1,67 +1,19 @@
-"use client";
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
 
-import { DotOutlineIcon, EnvelopeOpenIcon } from "@phosphor-icons/react/ssr";
-import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import { useAudio } from "@/context/AudioContext";
-import { useGuestName } from "@/hooks/useGuestName";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-
-const OpenerContent = ({ onOpen }: { onOpen: () => void }) => {
-   const [isVisible, setIsVisible] = useState(true);
-   const guestName = useGuestName();
-   const { playAudio } = useAudio();
-   const imageRef = useRef<HTMLDivElement>(null);
-   const containerRef = useRef<HTMLDivElement>(null);
-
-   // GSAP animation for the image
-   useGSAP(() => {
-      if (imageRef.current) {
-         // Initial state: zoomed out and transparent
-         gsap.set(imageRef.current, {
-            scale: 0.8,
-            opacity: 0,
-         });
-
-         // Animate to final state: zoomed in and opaque
-         gsap.to(imageRef.current, {
-            scale: 1,
-            opacity: 1,
-            duration: 1.5,
-            ease: "power2.out",
-            delay: 0.5,
-         });
-      }
-
-      // Create flower rain effect
-      if (containerRef.current) {
-         // Create multiple flowers
-         const flowerCount = 20;
-         for (let i = 0; i < flowerCount; i++) {
-            createFlower(containerRef.current, i);
-         }
-      }
-   }, []);
-
-   // Function to create and animate a single flower
-   const createFlower = (container: HTMLDivElement, index: number) => {
-      // Create flower element
-      const flower = document.createElement("div");
-      flower.innerHTML = `
 <svg
    version="1.1"
    id="svg1"
-   width="50px"
-   height="50px"
-   viewBox="0 0 941.90381 955.48271"
+   width="527.82672"
+   height="543.71191"
+   viewBox="0 0 527.82672 543.7119"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
      id="defs1" />
   <g
      id="g1"
-     transform="translate(-1151.7412,-58.853433)">
+     transform="translate(-89.595329,-1946.6375)">
     <g
        id="group-R5">
       <path
@@ -165,139 +117,3 @@ const OpenerContent = ({ onOpen }: { onOpen: () => void }) => {
     </g>
   </g>
 </svg>
-        `;
-      flower.className = "absolute z-0";
-      container.appendChild(flower);
-
-      // Random initial position
-      const startX = Math.random() * window.innerWidth;
-      const startY = -50;
-      const endY = window.innerHeight + 50;
-
-      // Random size
-      const scale = 0.3 + Math.random() * 0.7;
-      flower.style.transform = `translate(${startX}px, ${startY}px) scale(${scale})`;
-
-      // Random rotation and animation properties
-      const rotation = Math.random() * 360;
-      const rotationChange = (Math.random() - 0.5) * 180;
-      const horizontalMovement = (Math.random() - 0.5) * 200;
-
-      // Random animation duration
-      const duration = 8 + Math.random() * 12;
-
-      // Animate the flower with a more natural movement
-      gsap.to(flower, {
-         y: endY,
-         x: `+=${horizontalMovement}`,
-         rotation: rotation + rotationChange,
-         duration: duration,
-         ease: "none",
-         onComplete: () => {
-            // Remove flower when animation completes
-            flower.remove();
-            // Create a new flower to replace it
-            if (containerRef.current && isVisible) {
-               createFlower(containerRef.current, index);
-            }
-         },
-      });
-   };
-
-   const handleOpen = () => {
-      setIsVisible(false);
-      // Delay the callback to allow for transition animation
-      setTimeout(() => {
-         onOpen();
-      }, 500);
-
-      // Play audio when opening invitation
-      playAudio();
-   };
-
-   // Prevent scrolling when the opener is visible
-   useEffect(() => {
-      if (isVisible) {
-         document.body.style.overflow = "hidden";
-      } else {
-         document.body.style.overflow = "auto";
-      }
-
-      // Cleanup function
-      return () => {
-         document.body.style.overflow = "auto";
-      };
-   }, [isVisible]);
-
-   if (!isVisible) return null;
-
-   return (
-      <div
-         ref={containerRef}
-         className="flex flex-col min-h-svh justify-between chivo-font z-20 lg bg-[#ECDCCB] transition-opacity duration-500 ease-in-out relative overflow-hidden"
-      >
-         <Image
-            src={`/flower-1.svg`}
-            width={0}
-            height={0}
-            sizes="100%"
-            alt="flower-1"
-            className="size-max top-0 left-0 absolute z-10 bg-[#ECDCCB]"
-            priority
-            fetchPriority="high"
-         />
-         <div className="flex flex-col justify-center items-center z-50 mt-20">
-            <div className="flex flex-col items-center md:w-3/4">
-               <div className="font-medium italic text-2xl">Undangan Pernikahan</div>
-               <div className="cookie-font text-7xl">
-                  A <span className="playfair-font">{"&"}</span> R
-               </div>
-               <div className="flex flex-row items-center text-base">
-                  <div>Bandung</div>
-                  <div>
-                     <DotOutlineIcon size={16} weight="fill" color="black" />
-                  </div>
-                  <div>04</div>
-                  <div>
-                     <DotOutlineIcon size={16} weight="fill" color="black" />
-                  </div>
-                  <div>Oktober</div>
-                  <div>
-                     <DotOutlineIcon size={16} weight="fill" color="black" />
-                  </div>
-                  <div>2025</div>
-               </div>
-            </div>
-         </div>
-         <div ref={imageRef} className="w-full z-50 mt-5">
-            <Image
-               src={`/opener-img.png`}
-               width={0}
-               height={0}
-               sizes="100%"
-               alt="flower-2"
-               className="w-3/4 md:w-full mx-auto"
-               priority
-               fetchPriority="high"
-            />
-         </div>
-         <div className="text-center mb-5 mt-10 z-50">
-            <p className="sm:text-sm">Kepada Yth Bapak/Ibu/Saudara/i</p>
-            {/* Guest Name */}
-            <h2 className="text-2xl sm:text-xl font-medium">{guestName}</h2>
-         </div>
-         <div className="m-4 z-50 sticky">
-            <button onClick={handleOpen} className="btn-primary w-full sm:text-sm">
-               Buka Undangan{" "}
-               <EnvelopeOpenIcon size={20} weight="duotone" className="ml-2" />
-            </button>
-         </div>
-      </div>
-   );
-};
-
-const OpenerSection = ({ onOpen }: { onOpen: () => void }) => {
-   return <OpenerContent onOpen={onOpen} />;
-};
-
-export default OpenerSection;

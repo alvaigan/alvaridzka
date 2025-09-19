@@ -1,15 +1,26 @@
 "use client";
 
 import { PaperPlaneRightIcon, PaperPlaneTiltIcon, ShareFatIcon } from "@phosphor-icons/react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { createComment, getComments } from "@/app/actions";
 
 gsap.registerPlugin(ScrollTrigger);
 
+type Comment = {
+    name: string;
+    comment: string;
+};
+
 const WishSection = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [inputComment, setInputComment] = useState<Comment>({
+        name: "",
+        comment: "",
+    })
 
     useGSAP(
         () => {
@@ -69,63 +80,46 @@ const WishSection = () => {
         { scope: containerRef },
     );
 
-    const commentItem = [
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-        {
-            name: "TEst",
-            comment:
-                "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-        },
-    ];
+    useEffect(() => {
+        const commentsData = getComments();
+
+        commentsData.then((data) => {
+            const receivedComments: Comment[] = data.map((comment: any) => ({
+                name: comment.name,
+                comment: comment.comment
+            }))
+            setComments(receivedComments);
+        });
+    }, [])
+
+    const handleSendComment = () => {
+        if (inputComment.name.trim() !== "" && inputComment.comment.trim() !== "") {
+            const newComment = {
+                name: inputComment.name,
+                comment: inputComment.comment
+            }
+            console.log("new comment", newComment);
+            createComment(newComment.name, newComment.comment).then(() => {
+                const commentsData = getComments();
+                commentsData.then((data) => {
+                    const receivedComments: Comment[] = data.map((comment: any) => ({
+                        name: comment.name,
+                        comment: comment.comment
+                    }))
+                    setComments(receivedComments);
+                });
+            }).catch((error) => {
+                console.log(error);
+                alert("Terjadi kesalahan saat mengirim ucapan.");
+            });
+            setInputComment({ name: "", comment: "" });
+
+            alert("Terimakasih telah mengirim ucapan.");
+        } else {
+            alert("Nama dan ucapan harus diisi.");
+        }
+    }
+
     return (
         <div
             ref={containerRef}
@@ -141,20 +135,24 @@ const WishSection = () => {
                     type="text"
                     placeholder="Masukkan Nama"
                     className="bg-white rounded-lg py-2 px-4"
+                    onChange={(e) => setInputComment({ ...inputComment, name: e.target.value })}
+                    value={inputComment.name}
                 />
 
                 <textarea
                     placeholder="Masukkan Ucapan"
                     className="bg-white rounded-lg py-2 px-4"
+                    onChange={(e) => setInputComment({ ...inputComment, comment: e.target.value })}
+                    value={inputComment.comment}
                 />
 
-                <button className="bg-dark rounded-lg py-2 px-4 text-white">
+                <button className="bg-dark rounded-lg py-2 px-4 text-white" onClick={handleSendComment}>
                     Kirim <ShareFatIcon className="inline ml-2" weight="duotone" />
                 </button>
 
-                {commentItem.length > 0 && (
+                {comments.length > 0 && (
                     <div className="flex flex-col gap-4 chivo-font text-sm overflow-y-scroll h-50">
-                        {commentItem.map((item, index) => (
+                        {comments.map((item: any, index: number) => (
                             <div
                                 key={index}
                                 className="comment-item flex flex-col gap-2 border-t border-[#ECDCCB] py-4"
