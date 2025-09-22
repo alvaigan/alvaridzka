@@ -39,18 +39,26 @@ export const metadata: Metadata = {
     description: "The Wedding of Alvaigan & Ridzka Nur Fajrie",
     images: [
       {
-        url: "/couple.jpg",
+        url: "https://alvaridzka.site/couple.jpg", // Replace with your actual domain
         width: 1200,
         height: 630,
         alt: "Alvaigan & Ridzka Nur Fajrie",
       },
+      {
+        url: "https://alvaridzka.site/main-couple.png", // Alternative image
+        width: 1080,
+        height: 1080,
+        alt: "Alvaigan & Ridzka Nur Fajrie",
+      },
     ],
+    type: "website",
+    locale: "id_ID",
   },
   twitter: {
     card: "summary_large_image",
     title: "Alvaigan & Ridzka Nur Fajrie",
     description: "The Wedding of Alvaigan & Ridzka Nur Fajrie",
-    images: ["/couple.jpg"],
+    images: ["https://alvaridzka.site/couple.jpg"], // Replace with your actual domain
   },
 };
 
