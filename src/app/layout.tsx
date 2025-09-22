@@ -34,6 +34,24 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Alvaigan & Ridzka Nur Fajrie",
   description: "The Wedding of Alvaigan & Ridzka Nur Fajrie",
+  openGraph: {
+    title: "Alvaigan & Ridzka Nur Fajrie",
+    description: "The Wedding of Alvaigan & Ridzka Nur Fajrie",
+    images: [
+      {
+        url: "/couple.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Alvaigan & Ridzka Nur Fajrie",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alvaigan & Ridzka Nur Fajrie",
+    description: "The Wedding of Alvaigan & Ridzka Nur Fajrie",
+    images: ["/couple.jpg"],
+  },
 };
 
 export default function RootLayout({
