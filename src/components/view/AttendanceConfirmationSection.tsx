@@ -3,11 +3,24 @@
 import React, { useEffect, useState } from "react";
 import { useGuestName } from "@/hooks/useGuestName";
 import { confirmGuest, isGuestConfirm } from "@/app/actions";
+import { useSearchParams } from "next/navigation";
 
 const AttendanceConfirmationContent = () => {
-  const guestName = useGuestName();
+  const searchParams = useSearchParams();
+  const [guestName, setGuestName] = useState<string>("");
   const [confirmed, setConfirmed] = useState<boolean>(false);
   const [attendance, setAttendance] = useState<boolean>(false);
+
+  useEffect(() => {
+    let name = ""
+    if (searchParams) {
+      name = searchParams.get("to") || "";
+      if (name) {
+        setGuestName(decodeURIComponent(name));
+      }
+    }
+
+  }, []);
 
   useEffect(() => {
     if (guestName) {
@@ -18,7 +31,7 @@ const AttendanceConfirmationContent = () => {
         }
       });
     }
-  }, []);
+  }, [guestName])
 
   const handleAttendance = (isAttending: boolean) => {
     if (confirmed) {
@@ -50,7 +63,8 @@ const AttendanceConfirmationContent = () => {
         <div className="flex justify-center bg-[#4D412A] text-white p-4 my-3 rounded-lg">
           <div className="flex flex-col items-center">
             <p className="text-sm">
-              Terima Kasih <span className="font-semibold">{guestName}</span> Atas Konfirmasi Kehadiran Anda
+              Terima Kasih <span className="font-semibold">{guestName}</span>{" "}
+              Atas Konfirmasi Kehadiran Anda
             </p>
           </div>
         </div>
